@@ -1,0 +1,22 @@
+apply plugin: "java"
+apply plugin: "idea"
+
+ext {
+    restxVersion = "0.35-SNAPSHOT"
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+    maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+dependencies {
+    [
+            "restx-core", "restx-security-basic", "restx-core-annotation-processor", "restx-factory", "restx-factory-admin", "restx-validation", "restx-monitor-codahale",
+            "restx-monitor-admin", "restx-log-admin", "restx-i18n-admin", "restx-stats-admin", "restx-server-jetty", "restx-apidocs", "restx-specs-admin", "restx-admin"
+    ].each {
+        compile "io.restx:$it:${restxVersion}"
+    }
+}
